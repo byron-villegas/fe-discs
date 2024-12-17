@@ -1,0 +1,31 @@
+li {
+    transition: all .2s;
+}
+
+.navbar-dark {
+    background-color: #121212 !important;
+}
+
+.fa-search {
+    color: #d4d4d4;
+    font-size: 25px;
+    cursor: pointer;
+    padding: auto;
+    animation: pulse 1s infinite;
+}
+
+.fa-search:hover {
+    color: #ebebeb;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

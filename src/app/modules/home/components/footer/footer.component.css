@@ -1,0 +1,11 @@
+a {
+    transition: all .2s;
+}
+
+.vertical-line {
+    border-top: 1px solid #686868 !important;
+}
+
+.link-white:hover {
+    color: white !important;
+}

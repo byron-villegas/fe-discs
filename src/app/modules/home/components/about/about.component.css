@@ -1,0 +1,14 @@
+.border-silent-hill {
+    padding: 0;
+    border: solid 1px #c41016 !important;
+    box-shadow: 0px 0px 7px 3px #c41016 !important;
+    max-width: 80%;
+}
+
+.none-border {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 20%;
+}

@@ -1,0 +1,47 @@
+.col img:hover {
+    cursor: pointer;
+}
+
+.img-preview {
+    max-width: 100%;
+    transition: opacity .2s ease;;
+}
+
+.img-preview.selected {
+    opacity: .5;
+}
+
+a {
+    color: #dfdfdf !important;
+}
+
+a:hover {
+    color: #ffffff !important;
+}
+
+.fa-white {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: auto;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: #d8d8d8;
+}
+
+.breadcrumb-item a {
+    color: #d8d8d8 !important;
+}
+
+.breadcrumb-item a:hover {
+    color: #ffffff !important;
+}
+
+.breadcrumb-item {
+    color: #d8d8d8 !important;
+}
+
+.breadcrumb-item.active {
+    color: white !important;
+}

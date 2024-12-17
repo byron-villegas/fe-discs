@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <ul class="nav nav-underline justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'vinilos' ? 'active' : ''" (mouseenter)="activate(0)" (mouseleave)="desactivate(0)" href="#disc-category/vinilos" role="button" [attr.aria-expanded]="categoriasCheck[0]">VINILOS</a>
+          <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="categoriasCheck[0] == true ? 'show' : ''" (mouseenter)="activate(0)" (mouseleave)="desactivate(0)">
+            <li *ngFor="let subCategoria of subCategorias['vinyls']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'vinilos' ? 'active' : ''" href="#disc-category/vinilos/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'cds' ? 'active' : ''" (mouseenter)="activate(1)" (mouseleave)="desactivate(1)" href="#disc-category/cds" role="button" [attr.aria-expanded]="categoriasCheck[1]">CDS</a>
+          <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="categoriasCheck[1] == true ? 'show' : ''" (mouseenter)="activate(1)" (mouseleave)="desactivate(1)">
+            <li *ngFor="let subCategoria of subCategorias['cds']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'cds' ? 'active' : ''" href="#disc-category/cds/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'cassettes' ? 'active' : ''" (mouseenter)="activate(2)" (mouseleave)="desactivate(2)" href="#disc-category/cassettes" role="button" [attr.aria-expanded]="categoriasCheck[2]">CASSETTES</a>
+          <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="categoriasCheck[2] == true ? 'show' : ''" (mouseenter)="activate(2)" (mouseleave)="desactivate(2)">
+            <li *ngFor="let subCategoria of subCategorias['cassettes']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'cassettes' ? 'active' : ''" href="#disc-category/cassettes/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
+          </ul>
+        </li>
+      </ul>
+</div>
+<div class="container-fluid mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><i class="fa fa-home me-2" aria-hidden="true"></i>Inicio</a></li>
+      <li *ngIf="subCategoryName" class="breadcrumb-item"><a href="#disc-category/{{categoryName}}">{{categoryName | uppercase}}</a></li>
+      <li class="breadcrumb-item active">{{ (subCategoryName ? subCategoryName : categoryName) | uppercase | replaceAll:'-+':' '}}</li>
+    </ol>
+  </nav>
+  <div class="d-flex justify-content-end mb-3">
+      <span class="text-white mt-2 me-2"><strong>Ordenar Por</strong></span>
+      <select #orderSelect class="form-select bg-dark w-30 text-white" title="Ordenar Por" (change)="onOrder($any($event).target.value)">
+        <option value="reset" [selected]="order == 'reset'">Restablecer</option>
+        <option value="name+" [selected]="order == 'name+'">Nombre Ascendente</option>
+        <option value="name-" [selected]="order == 'name-'">Nombre Descendente</option>
+        <option value="author+" [selected]="order == 'author+'">Autor Ascendente</option>
+        <option value="author-" [selected]="order == 'author-'">Autor Descendente</option>
+        <option value="year+" [selected]="order == 'year+'">Año Ascendente</option>
+        <option value="year-" [selected]="order == 'year-'">Año Descendente</option>
+      </select>
+  </div> 
+</div>
+<app-disc-list [discs]="orderedDiscs"></app-disc-list>
+<p class="text-white text-end mt-3 me-3 fw-light">{{discs.length}} {{categoryName}} totales.</p>
+<div class="container-fluid mt-3">
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-end" data-bs-theme="dark">
+      <li class="page-item" [ngClass]="this.position == 0 ? 'disabled' : ''"><a class="page-link" href="#disc-category/{{categoryName}}{{ subCategoryName != '' ? '/' +subCategoryName : '' }}/page/{{(position + 1) - 1}}">Anterior</a></li>
+      <li *ngFor="let value of division; let i = index" class="page-item" [ngClass]="position == i ? 'active' : ''"><a class="page-link" href="#disc-category/{{categoryName}}{{ subCategoryName != '' ? '/' +subCategoryName : '' }}/page/{{(i + 1)}}">{{i+1}}</a></li>
+      <li class="page-item" [ngClass]="this.position == this.division.length - 1 ? 'disabled' : ''"><a class="page-link" href="#disc-category/{{categoryName}}{{ subCategoryName != '' ? '/' +subCategoryName : '' }}/page/{{(position + 2)}}">Siguiente</a></li>
+    </ul>
+  </nav>
+</div>

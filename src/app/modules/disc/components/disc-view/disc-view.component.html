@@ -1,0 +1,78 @@
+<div class="container-fluid mb-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="me-2" ><i class="fa fa-long-arrow-left fa-white" aria-hidden="true" title="Volver atras" (click)="back()"></i></li>
+      <li class="breadcrumb-item"><a href="#"><i class="fa fa-home me-2" aria-hidden="true"></i>Inicio</a></li>
+      <li *ngIf="subCategoryName" class="breadcrumb-item"><a href="#disc-category/{{categoryName}}">{{categoryName | uppercase}}</a></li>
+      <li class="breadcrumb-item active">{{ (subCategoryName! ? subCategoryName! : categoryName!) | uppercase | replaceAll:'-+':' '}}</li>
+    </ol>
+  </nav>
+</div>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+      <div class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+          <div class="carousel-item" [ngClass]="i == imageSelected ? 'active' : ''" *ngFor="let image of disc?.images; let i = index">
+            <img src="{{ disc! | imageRoute:image }}" class="d-block w-100" alt="{{disc!.sku + '-imagen-'+(i+1)}}" redZoom="{{ disc! | imageRoute:image }}" redZoomClass="red-zoom--style--magnifier" [redZoomMouseWheel]="false">
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-4 mt-1">
+        <div class="col" *ngFor="let image of disc?.images; let i = index">
+          <img src="{{ disc! | imageRoute:image }}" class="img-preview" [ngClass]="imageSelected == i ? 'selected': ''" alt="{{disc!.sku + '-prev-imagen-'+(i+1)}}" (click)="changeImageSelected(i)"/>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h3 class="text-white"><strong>{{disc?.author + ' – ' + disc?.name}}</strong></h3>
+      <br />
+      <small class="text-white">{{disc?.description}}</small>
+      <br />
+      <br />
+      <span class="text-white"><strong>Código de Barra: </strong></span>
+      <ngx-barcode [bc-value]="disc ? disc.sku! : '1111'" [bc-display-value]="true" [bc-font]="'monospace'" [bc-height]="60" title="Codigo de Barra del Disco"></ngx-barcode>
+      <br />
+      <span class="text-white"><strong>SKU: </strong>{{disc?.sku}}</span>
+      <br />
+      <span class="text-white"><strong>Autor: </strong>{{disc?.author}}</span>
+      <br />
+      <span class="text-white"><strong>Editora: </strong>{{disc?.publisher}}</span>
+      <br />
+      <span class="text-white"><strong>Año: </strong>{{disc?.yearCreated}}</span>
+      <br />
+      <span class="text-white"><strong>Pais: </strong>{{disc?.country}}</span>
+      <br />
+      <span class="text-white"><strong>Categorías: </strong><span *ngFor="let categoria of disc?.categories; let i = index"><a class="link-secondary text-decoration-none" href="#disc-category/{{ ['VINILOS', 'CDS', 'CASSETTES'].includes(categoria) ? categoria.toLowerCase() : disc!.categories!.includes('VINILOS') ? 'vinilos' : disc!.categories!.includes('CDS') ? 'cds' : disc!.categories!.includes('CASSETTES') ? 'cassettes' : '' }}{{!['VINILOS', 'CDS', 'CASSETTES'].includes(categoria) ? '/' + this.replaceAll.transform(categoria.toLowerCase(), ' +', '-') : ''}}">{{categoria}}</a>  <span *ngIf="i+1 != disc!.categories?.length">, </span></span> </span>
+      <br />
+      <span class="text-white"><strong class="me-2">Compartir: </strong>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en Facebook" ><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/share?url={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <!-- <a href="https://pinterest.com/pin/create/button/?url={{pageUrl}}&amp;media={{baseUrl + disc!.images[0]}}" target="_blank" class="text-white me-3" title="Compartir en Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> -->
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        <a href="https://api.whatsapp.com/send?text={{pageUrl}}" data-action="share/whatsapp/share" target="_blank" class="text-white me-3" title="Compartir en Whatsapp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://telegram.me/share/url?url={{pageUrl}}" target="_blank" class="text-white" title="Compartir en Telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+      </span>
+      <br />
+      <br />
+      <span class="text-white"><strong>Código QR: </strong></span>
+      <qrcode [qrdata]="pageUrl" [ariaLabel]="'Codigo QR del Disco'" [cssClass]="'center'" [colorDark]="'#000000'" [colorLight]="'#ffffff'" [elementType]="'canvas'" [errorCorrectionLevel]="'M'" [margin]="4" [scale]="1" [title]="'Codigo QR del Disco'" [width]="200"></qrcode>
+      <br />
+    </div>
+  </div>
+  <div class="row mt-5">
+    <h3 class="text-white mb-3">Listado de Canciones</h3>
+    <h4 *ngIf="disc?.trackList?.length == 0" class="text-danger">Aún no hemos cargado las canciones de este disco</h4>
+    <div class="text-center">
+      <table class="table table-sm table-dark text-start">
+        <tbody>
+          <tr *ngFor="let track of disc?.trackList">
+            <td>{{track.position}}</td>
+            <td>{{track.name}}</td>
+            <td>{{track.duration}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

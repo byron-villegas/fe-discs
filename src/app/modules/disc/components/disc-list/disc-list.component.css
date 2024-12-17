@@ -1,0 +1,48 @@
+.container-disc {
+    background-color: #121212;
+    width: 99%
+}
+
+.card-disc {
+    background-color: #181818;
+}
+
+.card-disc:hover {
+    cursor: pointer;
+    background-color: #252525;
+}
+
+.card-img-disc {
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 0px !important;
+}
+
+.col-disc {
+    margin-bottom: 10px;
+}
+
+/* BEGIN DISC HOVE EFFECT */
+.card-img-disc a .disc-element {
+    position: relative !important;
+    overflow: hidden !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    opacity: 1;
+    visibility: visible;
+    transition: all .25s ease-in-out
+}
+
+.hover-img {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    transition: all .4s ease-in-out
+}
+
+.card-disc:hover .card-img-disc a .disc-element .hover-img {
+    opacity: 1
+}
+/* END DISC HOVE EFFECT */

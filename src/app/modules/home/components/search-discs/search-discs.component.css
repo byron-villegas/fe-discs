@@ -1,0 +1,64 @@
+.offcanvas {
+    height: 94%;
+    background-color: rgba(0, 0, 0, 0.815) !important;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid rgb(231, 231, 231);
+    padding-bottom: 0;
+    padding-top: 0;
+    font-style: italic;
+    font-size: 30px;
+    color: #ffffff;
+    height: 70px;
+    background-color: transparent;
+    box-shadow: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.col a img {
+    width: 30%;
+    cursor: pointer;
+}
+
+.col a {
+    cursor: pointer;
+}
+
+.text-white {
+    font-size: 14px;
+}
+
+.h1 {
+    font-size: 64px;
+}
+
+h6 {
+    margin-bottom: 0px !important;
+}
+
+/* BEGIN DISC HOVE EFFECT */
+a .disc-element {
+    position: relative !important;
+    overflow: hidden !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    opacity: 1;
+    visibility: visible;
+    transition: all .25s ease-in-out
+}
+
+a .hover-img {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    transition: all .4s ease-in-out
+}
+
+a:hover .disc-element .hover-img {
+    opacity: 1
+}
+/* END DISC HOVE EFFECT */

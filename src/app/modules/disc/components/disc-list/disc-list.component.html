@@ -1,0 +1,29 @@
+<!-- BEGIN DISC LIST -->
+<div class="container-fluid py-3 container-disc">
+  <div class="row row-cols-1 row-cols-md-5">
+    <div *ngFor="let disc of discs" class="col col-disc">
+      <div class="card card-disc text-white">
+        <div class="card-img-disc">
+            <a href="#/disc/{{disc.sku}}" class="link-light">
+              <div class="disc-element">
+                <img src="{{ disc | imageRoute:disc!.images[0] }}" class="w-100" alt="{{disc.sku + '-imagen-1'}}">
+                <div class="hover-img" *ngIf="disc!.images[1]">
+                  <img src="{{ disc | imageRoute:disc!.images[1] }}" class="hover-img w-100" alt="{{disc.sku + '-imagen-2'}}">
+                </div>
+              </div>
+            </a>
+        </div>
+        <div class="card-body">
+          <a href="#/disc/{{disc.sku}}" class="link-light">
+            <small>
+              <strong>{{disc.name}}</strong>
+            </small>
+          </a>
+          <br/>
+          <small class="d-flex justify-content-star">{{disc.author}}</small>
+          <small class="d-flex justify-content-end">{{disc.yearCreated}}</small>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- END DISC LIST -->
