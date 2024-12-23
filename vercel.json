@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "project",
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/discs"
+      }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/**"
+      }
+    }
+  }
