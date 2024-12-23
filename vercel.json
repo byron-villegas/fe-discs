@@ -7,13 +7,13 @@
             "handle": "filesystem"
         },
         {
-            "src": "/(.*)",
+            "src": "/discs/(.*)",
             "dest": "/index.html"
         }
     ],
     "rewrites": [
         {
-            "source": "/(.*)",
+            "source": "/discs/(.*)",
             "destination": "/index.html"
         }
     ]
