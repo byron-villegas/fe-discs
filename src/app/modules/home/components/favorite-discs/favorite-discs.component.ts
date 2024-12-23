@@ -13,8 +13,6 @@ export class FavoriteDiscsComponent implements OnInit {
   constructor(private discService: DiscService) {
       this.discService.findFavoriteDiscs().subscribe(resp => {
         this.favoriteDiscs = resp;
-
-        discService.saveFavoriteDiscsOnLocalStorage(this.favoriteDiscs);
       });
   }
 
