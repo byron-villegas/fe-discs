@@ -9,8 +9,6 @@
       }
     ],
     "functions": {
-      "api/index.js": {
-        "includeFiles": "dist/**"
-      }
+        
     }
   }
