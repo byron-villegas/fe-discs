@@ -4,7 +4,11 @@
     "trailingSlash": false,
     "rewrites": [
         {
-            "source": "/(.*)",
+            "source": "/discs/(.*)",
+            "destination": "/"
+        },
+        {
+            "source": "/discs/(.*)",
             "destination": "/index.html"
         }
     ]
