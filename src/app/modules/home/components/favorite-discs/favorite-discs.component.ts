@@ -11,17 +11,11 @@ export class FavoriteDiscsComponent implements OnInit {
   favoriteDiscs: Disc[] = [];
 
   constructor(private discService: DiscService) {
-    let favoriteDiscsOnLocalStorage = discService.getFavoriteDiscsOnLocalStorage();
-
-    this.favoriteDiscs = favoriteDiscsOnLocalStorage;
-
-    if (this.favoriteDiscs.length == 0) {
       this.discService.findFavoriteDiscs().subscribe(resp => {
         this.favoriteDiscs = resp;
 
         discService.saveFavoriteDiscsOnLocalStorage(this.favoriteDiscs);
       });
-    }
   }
 
   ngOnInit() {
