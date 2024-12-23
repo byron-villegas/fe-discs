@@ -2,15 +2,6 @@
     "version": 2,
     "cleanUrls": true,
     "trailingSlash": false,
-    "routes": [
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/discs/(.*)",
-            "dest": "/index.html"
-        }
-    ],
     "rewrites": [
         {
             "source": "/discs/(.*)",
