@@ -7,8 +7,5 @@
         "source": "/(.*)",
         "destination": "/discs"
       }
-    ],
-    "functions": {
-
-    }
+    ]
   }
