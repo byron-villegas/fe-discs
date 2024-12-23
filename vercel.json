@@ -1,9 +1,9 @@
 {
     "version": 2,
-    "routes": [
+    "rewrites": [
         {
-            "src": "/discs/(.*)",
-            "dest": "index.html"
+            "source": "/(.*)",
+            "destination": "/discs"
         }
     ]
 }
