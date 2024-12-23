@@ -1,7 +1,7 @@
 {
     "version": 2,
     "public": true,
-    "name": "project",
+    "name": "fe-discs",
     "rewrites": [
       {
         "source": "/(.*)",
@@ -9,6 +9,6 @@
       }
     ],
     "functions": {
-        
+
     }
   }
