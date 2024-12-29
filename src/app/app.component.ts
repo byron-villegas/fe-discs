@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { Router, RouterEvent } from '@angular/router';
 import { ReplaceAllPipe } from './shared/pipe/replace-all.pipe';
-import { injectSpeedInsights } from '@vercel/speed-insights/*';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,6 @@ export class AppComponent {
   url: string = '';
 
   constructor(private router: Router, private replaceAll: ReplaceAllPipe, private titleService: Title) {
-    injectSpeedInsights();
 
     this.router.events.subscribe((event) => {
       if (event instanceof RouterEvent) {
