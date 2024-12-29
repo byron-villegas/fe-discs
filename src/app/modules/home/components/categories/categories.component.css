@@ -37,6 +37,8 @@ a:hover > h3 {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 150px;
+    height: 150px;
     background: repeating-radial-gradient(circle at center, #222 4px, transparent 8px);
     border-radius: 50%;
 }
