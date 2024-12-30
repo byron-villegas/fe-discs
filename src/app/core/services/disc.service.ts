@@ -72,8 +72,12 @@ export class DiscService {
     };
   }
 
-  findDiscBySku(sku: string): Disc {
-    return this.discs.filter(disc => disc.sku == sku)[0];
+  findDiscBySku(sku: string): Observable<Disc> {
+    return this.http.get<Disc>(`${environment.server.url}/${environment.server.paths.discs}/${sku}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
 
   findDiscsByCategoryAndSubCategory(categoryName: string, subCategoryName: string): Disc[] {

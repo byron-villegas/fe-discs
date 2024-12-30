@@ -31,13 +31,18 @@ export class DiscViewComponent implements OnInit {
         this.sku = params.get('sku')!;
       }
 
-      this.disc = this.discService.findDiscBySku(this.sku!);
-      this.titleService.setTitle(this.disc!.author + ' – ' + this.disc!.name + ' – Discs')
-      this.subCategoryName = this.disc.categories[0].toLowerCase();
-      this.disc.categories.forEach(category => {
-        if (['vinilos', 'cds', 'cassettes'].includes(category.toLocaleLowerCase())) {
-          this.categoryName = category.toLowerCase();
-        }
+      this.discService.findDiscBySku(this.sku!).subscribe((resp) => {
+        this.disc = resp;
+
+        this.titleService.setTitle(this.disc!.author + ' – ' + this.disc!.name + ' – Discs');
+        this.subCategoryName = this.disc.categories[0].toLowerCase();
+        this.disc.categories.forEach(category => {
+          if (['vinilos', 'cds', 'cassettes'].includes(category.toLocaleLowerCase())) {
+            this.categoryName = category.toLowerCase();
+          }
+        });
+      }, (error) => {
+        this.router.navigate(['/page-not-found']);
       });
     });
   }
