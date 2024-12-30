@@ -39,7 +39,7 @@
       <br />
       <span class="text-white"><strong>Editora: </strong>{{disc?.publisher}}</span>
       <br />
-      <span class="text-white"><strong>Año: </strong>{{disc?.yearCreated}}</span>
+      <span class="text-white"><strong>Año: </strong>{{disc?.yearCreated != 0 ? disc?.yearCreated : ''}}</span>
       <br />
       <span class="text-white"><strong>Pais: </strong>{{disc?.country}}</span>
       <br />
