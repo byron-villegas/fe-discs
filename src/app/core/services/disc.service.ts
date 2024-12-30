@@ -80,6 +80,10 @@ export class DiscService {
     });
   }
 
+  findDiscBySkuFromList(sku: string): Disc {
+    return this.discs.find(disc => disc.sku == sku)!;
+  }
+
   findDiscsByCategoryAndSubCategory(categoryName: string, subCategoryName: string): Disc[] {
     let discs = this.findDiscsByCategory('default');
     return discs.filter(disc => disc.categories.includes(categoryName.toUpperCase()) && disc.categories.includes(subCategoryName.toUpperCase()));

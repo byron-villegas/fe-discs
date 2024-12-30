@@ -46,6 +46,20 @@ export class DiscViewComponent implements OnInit {
         type: ''
       };
 
+      let discOfList = this.discService.findDiscBySkuFromList(this.sku!);
+
+      if(discOfList) {
+        this.disc = discOfList;
+        this.titleService.setTitle(this.disc.author + ' – ' + this.disc.name + ' – Discs');
+        this.subCategoryName = this.disc.categories[0].toLowerCase();
+        this.disc.categories.forEach(category => {
+          if (['vinilos', 'cds', 'cassettes'].includes(category.toLocaleLowerCase())) {
+            this.categoryName = category.toLowerCase();
+          }
+        });
+        return;
+      }
+
       this.discService.findDiscBySku(this.sku!).subscribe({
         next: (resp) => {
           this.disc = resp;
