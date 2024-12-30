@@ -31,6 +31,21 @@ export class DiscViewComponent implements OnInit {
         this.sku = params.get('sku')!;
       }
 
+      this.disc = {
+        sku: this.sku!,
+        name: '',
+        description: '',
+        author: '',
+        publisher: '',
+        yearCreated: 0,
+        country: '',
+        images: [],
+        categories: [],
+        trackList: [],
+        favorite: false,
+        type: ''
+      };
+
       this.discService.findDiscBySku(this.sku!).subscribe({
         next: (resp) => {
           this.disc = resp;
