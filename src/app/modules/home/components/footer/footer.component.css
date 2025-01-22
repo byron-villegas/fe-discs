@@ -9,3 +9,7 @@ a {
 .link-white:hover {
     color: white !important;
 }
+
+.active {
+    color: white !important;
+}
