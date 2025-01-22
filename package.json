@@ -11,12 +11,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/byron.villegas/coleccion.git"
+    "url": "git+https://github.com/byron-villegas/fe-discs.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/byron.villegas/coleccion/issues"
+    "url": "https://github.com/byron-villegas/fe-discs/issues"
   },
-  "homepage": "https://gitlab.com/byron.villegas/coleccion#readme",
+  "homepage": "https://github.com/byron-villegas/fe-discs/blob/main/README.md",
   "engines": {
     "node": ">=v16.17.0"
   },
