@@ -12,6 +12,8 @@ export class DiscService {
 
   private static discs: Disc[] = [];
 
+  private static favoriteDiscs: Disc[] = [];
+
   constructor(private http: HttpClient) {
     if(DiscService.discs.length == 0) {
       this.findDiscs().subscribe(resp => {
@@ -34,6 +36,14 @@ export class DiscService {
         'Content-Type': 'application/json'
       })
     });
+  }
+
+  setFavoriteDiscs(favoriteDiscs: Disc[]): void {
+    DiscService.favoriteDiscs = favoriteDiscs;
+  }
+
+  getFavoriteDiscs(): Disc[] {
+    return DiscService.favoriteDiscs;
   }
 
   findDiscsByType(type: string): Disc[] {
