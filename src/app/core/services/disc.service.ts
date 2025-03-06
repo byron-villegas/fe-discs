@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class DiscService {
 
-  private discs: Disc[] = [];
+  private static discs: Disc[] = [];
 
   constructor(private http: HttpClient) {
-    if(this.discs.length == 0) {
+    if(DiscService.discs.length == 0) {
       this.findDiscs().subscribe(resp => {
-        this.discs = resp;
+        DiscService.discs = resp;
       });
     }
   }
@@ -37,25 +37,19 @@ export class DiscService {
   }
 
   findDiscsByType(type: string): Disc[] {
-    return this.discs.filter(disc => disc.type == type.toUpperCase());
-  }
-
-  findDiscsByCategory(categoryName: string): Disc[] {
-
-    if (categoryName == 'default') {
-      return this.discs;
+    if (type == 'default') {
+      return DiscService.discs;
     }
 
-    return this.discs.filter(disc => disc.categories.includes(categoryName.toUpperCase()));
+    return DiscService.discs.filter(disc => disc.type == type.toUpperCase());
   }
 
   findSubCategoriesOfCategory(categoryName: string): string[] {
-    let discs = this.findDiscsByCategory('default');
+    let discs = this.findDiscsByType(categoryName);
 
     let allCategories: string[] = [];
 
     discs
-      .filter(disc => disc.categories.includes(categoryName.toUpperCase())) // FILTRAR DISCOS QUE INCLUYAN CATEGORIA PADRE
       .map(disc => { return disc.categories.filter(category => category != categoryName.toUpperCase()); })
       .forEach(categoria => {
         allCategories = allCategories.concat(categoria);
@@ -66,7 +60,7 @@ export class DiscService {
 
   findDiscsSubCategories(): SubCategory {
     return {
-      vinyls: this.findSubCategoriesOfCategory('vinilos'),
+      vinyls: this.findSubCategoriesOfCategory('vinyls'),
       cds: this.findSubCategoriesOfCategory('cds'),
       cassettes: this.findSubCategoriesOfCategory('cassettes')
     };
@@ -81,12 +75,13 @@ export class DiscService {
   }
 
   findDiscBySkuFromList(sku: string): Disc {
-    return this.discs.find(disc => disc.sku == sku)!;
+    return DiscService.discs.find(disc => disc.sku == sku)!;
   }
 
   findDiscsByCategoryAndSubCategory(categoryName: string, subCategoryName: string): Disc[] {
-    let discs = this.findDiscsByCategory('default');
-    return discs.filter(disc => disc.categories.includes(categoryName.toUpperCase()) && disc.categories.includes(subCategoryName.toUpperCase()));
+    let discs = this.findDiscsByType(categoryName);
+
+    return discs.filter(disc => disc.categories.includes(subCategoryName.toUpperCase()));
   }
 
   getFavoriteDiscsOnLocalStorage(): Disc[] {

@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <ul class="nav nav-underline justify-content-center">
         <li class="nav-item">
-          <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'vinilos' ? 'active' : ''" (mouseenter)="activate(0)" (mouseleave)="desactivate(0)" href="#disc-category/vinilos" role="button" [attr.aria-expanded]="categoriasCheck[0]">VINILOS</a>
+          <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'vinyls' ? 'active' : ''" (mouseenter)="activate(0)" (mouseleave)="desactivate(0)" href="#disc-category/vinyls" role="button" [attr.aria-expanded]="categoriasCheck[0]">VINILOS</a>
           <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="categoriasCheck[0] == true ? 'show' : ''" (mouseenter)="activate(0)" (mouseleave)="desactivate(0)">
-            <li *ngFor="let subCategoria of subCategorias['vinyls']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'vinilos' ? 'active' : ''" href="#disc-category/vinilos/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
+            <li *ngFor="let subCategoria of subCategorias['vinyls']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'vinyls' ? 'active' : ''" href="#disc-category/vinyls/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
           </ul>
         </li>
         <li class="nav-item">

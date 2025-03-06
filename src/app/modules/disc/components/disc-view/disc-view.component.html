@@ -43,7 +43,12 @@
       <br />
       <span class="text-white"><strong>Pais: </strong>{{disc?.country}}</span>
       <br />
-      <span class="text-white"><strong>Categorías: </strong><span *ngFor="let categoria of disc?.categories; let i = index"><a class="link-secondary text-decoration-none" href="#disc-category/{{ ['VINILOS', 'CDS', 'CASSETTES'].includes(categoria) ? categoria.toLowerCase() : disc!.categories!.includes('VINILOS') ? 'vinilos' : disc!.categories!.includes('CDS') ? 'cds' : disc!.categories!.includes('CASSETTES') ? 'cassettes' : '' }}{{!['VINILOS', 'CDS', 'CASSETTES'].includes(categoria) ? '/' + this.replaceAll.transform(categoria.toLowerCase(), ' +', '-') : ''}}">{{categoria}}</a>  <span *ngIf="i+1 != disc!.categories?.length">, </span></span> </span>
+      <span class="text-white"><strong>Categorías: </strong>
+        <span *ngFor="let categoria of disc?.categories; let i = index">
+          <a class="link-secondary text-decoration-none" href="#disc-category/{{ disc?.type?.toLowerCase() }}{{ disc?.type != categoria && categoria != 'VINILOS' ? '/' + this.replaceAll.transform(categoria.toLowerCase(), ' +', '-') : ''}}">{{categoria}}</a>  
+          <span *ngIf="i+1 != disc!.categories?.length">, </span>
+        </span>
+      </span>
       <br />
       <span class="text-white"><strong class="me-2">Compartir: </strong>
         <a href="https://www.facebook.com/sharer/sharer.php?u={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en Facebook" ><i class="fa fa-facebook" aria-hidden="true"></i></a>

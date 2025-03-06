@@ -29,7 +29,7 @@ export class SearchDiscsComponent implements OnInit {
     this.searchText = value;
 
     if (this.searchText.length != 0) {
-      this.discs = this.discService.findDiscsByCategory('default')
+      this.discs = this.discService.findDiscsByType('default')
         .filter(p => 
           p.sku.toUpperCase().includes(this.searchText.toUpperCase()) ||
           p.name.toUpperCase().includes(this.searchText.toUpperCase()) ||

@@ -5,5 +5,6 @@ export const environment = {
     paths: {
       discs: "discs"
     }
-  }
+  },
+  discsTypes: ['vinyls', 'cds', 'cassettes']
 };

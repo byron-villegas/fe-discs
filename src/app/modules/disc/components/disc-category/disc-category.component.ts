@@ -5,6 +5,7 @@ import { SubCategory } from 'src/app/core/models/subcategory';
 import { DiscCategoryService } from 'src/app/core/services/disc-category.service';
 import { DiscService } from 'src/app/core/services/disc.service';
 import { ReplaceAllPipe } from 'src/app/shared/pipe/replace-all.pipe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-disc-category',
@@ -36,7 +37,7 @@ export class DiscCategoryComponent implements OnInit {
         this.subCategoryName = params.get('subCategoryName')!;
       }
 
-      if (!['vinilos', 'cds', 'cassettes'].includes(this.categoryName)) {
+      if (!environment.discsTypes.includes(this.categoryName)) {
         this.router.navigate(['page-not-found']);
         return;
       }
@@ -77,20 +78,11 @@ export class DiscCategoryComponent implements OnInit {
   }
 
   getDiscs(): Disc[] {
-    switch (this.categoryName) {
-      case 'vinilos':
-        return this.discService.findDiscsByType('vinyl');
-      case 'cds':
-        return this.discService.findDiscsByType('cd');
-      case 'cassettes':
-        return this.discService.findDiscsByType('cassette');
+    if(!this.subCategoryName) {
+      return this.discService.findDiscsByType(this.categoryName!);
     }
 
-    if (this.subCategoryName!) {
-      return this.discService.findDiscsByCategoryAndSubCategory(this.categoryName!, this.replaceAll.transform(this.subCategoryName!, '-+', ' '));
-    } else {
-      return this.discService.findDiscsByCategory(this.categoryName!);
-    }
+    return this.discService.findDiscsByCategoryAndSubCategory(this.categoryName!, this.replaceAll.transform(this.subCategoryName!, '-+', ' '));
   }
 
   getDefaultDivision(): Disc[] {

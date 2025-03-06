@@ -7,6 +7,6 @@ import { Disc } from 'src/app/core/models/disc';
 export class ImageRoutePipe implements PipeTransform {
 
   transform(disc: Disc, image: string): any {
-    return 'assets/images/discs/' + disc.type.toLowerCase() + 's' + '/' + disc.sku + '/' + image;
+    return 'assets/images/discs/' + disc.type.toLowerCase() + '/' + disc.sku + '/' + image;
   }
 }

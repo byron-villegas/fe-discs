@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Disc } from 'src/app/core/models/disc';
 import { DiscService } from 'src/app/core/services/disc.service';
 import { ReplaceAllPipe } from 'src/app/shared/pipe/replace-all.pipe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-disc-view',
@@ -53,7 +54,7 @@ export class DiscViewComponent implements OnInit {
         this.titleService.setTitle(this.disc.author + ' – ' + this.disc.name + ' – Discs');
         this.subCategoryName = this.disc.categories[0].toLowerCase();
         this.disc.categories.forEach(category => {
-          if (['vinilos', 'cds', 'cassettes'].includes(category.toLocaleLowerCase())) {
+          if (environment.discsTypes.includes(category.toLocaleLowerCase())) {
             this.categoryName = category.toLowerCase();
           }
         });
@@ -67,7 +68,7 @@ export class DiscViewComponent implements OnInit {
           this.titleService.setTitle(this.disc!.author + ' – ' + this.disc!.name + ' – Discs');
           this.subCategoryName = this.disc.categories[0].toLowerCase();
           this.disc.categories.forEach(category => {
-            if (['vinilos', 'cds', 'cassettes'].includes(category.toLocaleLowerCase())) {
+            if (environment.discsTypes.includes(category.toLocaleLowerCase())) {
               this.categoryName = category.toLowerCase();
             }
           });

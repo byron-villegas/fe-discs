@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { Router, RouterEvent } from '@angular/router';
 import { ReplaceAllPipe } from './shared/pipe/replace-all.pipe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -32,16 +33,16 @@ export class AppComponent {
               if (lastPath == '') {
                 this.titleService.setTitle('Discs');
               } else {
-                if (urlSplit.includes('vinilos') || urlSplit.includes('cds') || urlSplit.includes('cassettes')) {
+                if (urlSplit.includes('vinyls') || urlSplit.includes('cds') || urlSplit.includes('cassettes')) {
 
                   if (urlSplit.includes('page')) {
-                    if (['vinilos', 'cds', 'cassettes'].includes(urlSplit[urlSplit.indexOf('page') - 1])) {
+                    if (environment.discsTypes.includes(urlSplit[urlSplit.indexOf('page') - 1])) {
                       this.titleService.setTitle(this.firstLetterUpperCase(urlSplit[urlSplit.indexOf('page') - 1]) + ' – Pagina ' + urlSplit[urlSplit.indexOf('page') + 1] + ' – Discs');
                     } else {
                       this.titleService.setTitle(this.firstLetterUpperCase(urlSplit[urlSplit.indexOf('page') - 2]) + ' – ' + this.firstLetterUpperCase(urlSplit[urlSplit.indexOf('page') - 1]) + ' – Pagina ' + urlSplit[urlSplit.indexOf('page') + 1] + ' – Discs');
                     }
                   } else {
-                    if (['vinilos', 'cds', 'cassettes'].includes(lastPath)) {
+                    if (environment.discsTypes.includes(lastPath)) {
                       this.titleService.setTitle(this.firstLetterUpperCase(lastPath) + ' – Discs');
 
                     } else {
@@ -71,6 +72,7 @@ export class AppComponent {
     if (!word.includes('-')) {
       return this.replaceAll.transform(word, '-+', ' ')[0].toUpperCase() + this.replaceAll.transform(word, '-+', ' ').substring(1);
     }
+    
     return this.replaceAll
       .transform(word, '-+', ' ')
       .split(' ')
