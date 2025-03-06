@@ -15,7 +15,6 @@ import { environment } from 'src/environments/environment';
 export class DiscViewComponent implements OnInit {
   sku: string | undefined;
   disc: Disc | undefined;
-  categoryName: string | undefined;
   subCategoryName: string | undefined;
   baseUrl: string;
   pageUrl: string;
@@ -53,11 +52,6 @@ export class DiscViewComponent implements OnInit {
         this.disc = discOfList;
         this.titleService.setTitle(this.disc.author + ' – ' + this.disc.name + ' – Discs');
         this.subCategoryName = this.disc.categories[0].toLowerCase();
-        this.disc.categories.forEach(category => {
-          if (environment.discsTypes.includes(category.toLocaleLowerCase())) {
-            this.categoryName = category.toLowerCase();
-          }
-        });
         return;
       }
 
@@ -67,11 +61,6 @@ export class DiscViewComponent implements OnInit {
 
           this.titleService.setTitle(this.disc!.author + ' – ' + this.disc!.name + ' – Discs');
           this.subCategoryName = this.disc.categories[0].toLowerCase();
-          this.disc.categories.forEach(category => {
-            if (environment.discsTypes.includes(category.toLocaleLowerCase())) {
-              this.categoryName = category.toLowerCase();
-            }
-          });
         },
         error: () => {
           this.router.navigate(['/page-not-found']);
