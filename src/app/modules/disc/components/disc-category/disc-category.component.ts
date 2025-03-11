@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Disc } from 'src/app/core/models/disc';
 import { SubCategory } from 'src/app/core/models/subcategory';
@@ -25,64 +26,79 @@ export class DiscCategoryComponent implements OnInit {
   position = 0;
   division: Disc[][] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private discService: DiscService, public replaceAll: ReplaceAllPipe, private discCategoryService: DiscCategoryService) {
-    
+  constructor(private router: Router, private titleService: Title, private route: ActivatedRoute, private discService: DiscService, public replaceAll: ReplaceAllPipe, private discCategoryService: DiscCategoryService) {
+
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.categoryName = params.get('categoryName')!;
 
-      if (params.get('subCategoryName')) {
-        this.subCategoryName = params.get('subCategoryName')!;
-      }
+      if(this.discs.length == 0) {
+        this.discService.findDiscs().subscribe(resp => {
+          this.discService.setDiscs(resp);
+          this.categoryName = params.get('categoryName')!;
 
-      if (!environment.discsTypes.includes(this.categoryName)) {
-        this.router.navigate(['page-not-found']);
-        return;
-      }
-
-      this.discs = this.getDiscs();
-
-      this.orderedDiscs = this.getDefaultDivision();
-
-      this.subCategorias = this.discService.findDiscsSubCategories();
-
-      this.order = this.discCategoryService.getOrder();
-
-      if (!params.get('pageNumber')) {
-        this.order = 'reset';
-      }
-
-      if (params.get('pageNumber') && !parseInt(params.get('pageNumber')!)) {
-        this.redirectToNotFoundPage();
-      }
-
-      if (params.get('pageNumber')) {
-        this.position = parseInt(params.get('pageNumber')!);
-
-        if (this.position > this.division.length || this.position < 0) {
-          this.redirectToNotFoundPage();
-        }
-
-        this.position = this.position - 1;
-      }
-
-      this.changeDiscPage(this.position);
-      this.onOrder(this.order);
-
-      if (this.discs.length == 0) {
-        this.redirectToNotFoundPage();
+          let title = `${this.categoryName}`
+    
+          if (params.get('subCategoryName')) {
+            this.subCategoryName = params.get('subCategoryName')!;
+            title = `${title} – ${this.subCategoryName}`;
+          }
+    
+          if (params.get('pageNumber')) {
+            title = `${title} – Página ${params.get('pageNumber')} – Discs`;
+          }
+          
+          this.titleService.setTitle(this.firstLetterUpperCase(title));
+    
+          if (!environment.discsTypes.includes(this.categoryName)) {
+            this.router.navigate(['page-not-found']);
+            return;
+          }
+    
+          this.discs = this.getDiscs();
+    
+          this.orderedDiscs = this.getDefaultDivision();
+    
+          this.subCategorias = this.discService.findDiscsSubCategories();
+    
+          this.order = this.discCategoryService.getOrder();
+    
+          if (!params.get('pageNumber')) {
+            this.order = 'reset';
+          }
+    
+          if (params.get('pageNumber') && !parseInt(params.get('pageNumber')!)) {
+            this.redirectToNotFoundPage();
+          }
+    
+          if (params.get('pageNumber')) {
+            this.position = parseInt(params.get('pageNumber')!);
+    
+            if (this.position > this.division.length || this.position < 0) {
+              this.redirectToNotFoundPage();
+            }
+    
+            this.position = this.position - 1;
+          }
+    
+          this.changeDiscPage(this.position);
+          this.onOrder(this.order);
+    
+          if (this.discs.length == 0) {
+            this.redirectToNotFoundPage();
+          }
+        });
       }
     });
   }
 
   getDiscs(): Disc[] {
-    if(!this.subCategoryName) {
-      return this.discService.findDiscsByType(this.categoryName!);
+    if(this.subCategoryName == '') {
+      return this.discService.findDiscsByType(this.categoryName);
+    } else {
+      return this.discService.findDiscsByCategoryAndSubCategory(this.categoryName!, this.replaceAll.transform(this.subCategoryName!, '-+', ' '));
     }
-
-    return this.discService.findDiscsByCategoryAndSubCategory(this.categoryName!, this.replaceAll.transform(this.subCategoryName!, '-+', ' '));
   }
 
   getDefaultDivision(): Disc[] {
@@ -197,5 +213,17 @@ export class DiscCategoryComponent implements OnInit {
   changeDiscPage(position: number): void {
     this.position = position;
     this.orderedDiscs = this.division[position];
+  }
+
+  private firstLetterUpperCase(word: string) {
+    if (!word.includes('–')) {
+      return this.replaceAll.transform(word, '-+', ' ')[0].toUpperCase() + this.replaceAll.transform(word, '-+', ' ').substring(1);
+    }
+    
+    return this.replaceAll
+      .transform(word, '-+', ' ')
+      .split(' ')
+      .map((w) => w[0].toUpperCase() + w.substring(1))
+      .join(' ');
   }
 }

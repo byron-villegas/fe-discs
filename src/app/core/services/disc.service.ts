@@ -10,16 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class DiscService {
 
-  private static discs: Disc[] = [];
-
-  private static favoriteDiscs: Disc[] = [];
+  private discs: Disc[] = [];
+  private favoriteDiscs: Disc[] = [];
 
   constructor(private http: HttpClient) {
-    if(DiscService.discs.length == 0) {
-      this.findDiscs().subscribe(resp => {
-        DiscService.discs = resp;
-      });
-    }
+
   }
 
   findDiscs(): Observable<Disc[]> {
@@ -37,21 +32,29 @@ export class DiscService {
       })
     });
   }
+  
+  getDiscs(): Disc[] {
+    return this.discs;
+  }
 
-  setFavoriteDiscs(favoriteDiscs: Disc[]): void {
-    DiscService.favoriteDiscs = favoriteDiscs;
+  setDiscs(discs: Disc[]): void {
+    this.discs = discs;
   }
 
   getFavoriteDiscs(): Disc[] {
-    return DiscService.favoriteDiscs;
+    return this.favoriteDiscs;
+  }
+
+  setFavoriteDiscs(favoriteDiscs: Disc[]): void {
+    this.favoriteDiscs = favoriteDiscs;
   }
 
   findDiscsByType(type: string): Disc[] {
     if (type == 'default') {
-      return DiscService.discs;
+      return this.discs;
     }
 
-    return DiscService.discs.filter(disc => disc.type == type.toUpperCase());
+    return this.discs.filter(disc => disc.type == type.toUpperCase());
   }
 
   findSubCategoriesOfCategory(categoryName: string): string[] {
@@ -85,13 +88,27 @@ export class DiscService {
   }
 
   findDiscBySkuFromList(sku: string): Disc {
-    return DiscService.discs.find(disc => disc.sku == sku)!;
+    return this.discs.find(disc => disc.sku == sku)!;
   }
 
   findDiscsByCategoryAndSubCategory(categoryName: string, subCategoryName: string): Disc[] {
     let discs = this.findDiscsByType(categoryName);
 
     return discs.filter(disc => disc.categories.includes(subCategoryName.toUpperCase()));
+  }
+
+  getDiscsOnLocalStorage(): Disc[] {
+    let data = localStorage.getItem('discs');
+
+    if(!data) {
+      return [];
+    }
+
+    return JSON.parse(data);
+  }
+
+  saveDiscsOnLocalStorage(discs: Disc[]): void {
+    localStorage.setItem('discs', JSON.stringify(discs));
   }
 
   getFavoriteDiscsOnLocalStorage(): Disc[] {

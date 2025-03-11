@@ -32,14 +32,14 @@ describe('Entrar en la pagina quienes somos', () => {
     it('Validar que el nav al momento de entrar a la pagina posea la opcion QUIENES SOMOS activada', () => {
         const option = 'QUIENES SOMOS';
 
-        cy.visit('/#/about-us');
+        cy.visit('/about-us');
         cy.wait(2000);
 
         cy.xpath(`//*/nav/div/div/ul/li/a/strong[text()='${option}']`).parent().should('have.class', 'active');
         cy.wait(2000);
     });
     it('Validar que el nav al momento de entrar a la pagina el titulo sea quienes somos', () => {
-        cy.visit('/#/about-us');
+        cy.visit('/about-us');
         cy.wait(2000);
         cy.title().should('eq', 'Quienes Somos – Discs');
         cy.wait(2000);
@@ -50,14 +50,14 @@ describe('Entrar en la pagina contactanos', () => {
     it('Validar que el nav al momento de entrar a la pagina posea la opcion CONTÁCTANOS activada', () => {
         const option = 'CONTÁCTANOS';
 
-        cy.visit('/#/contact-us');
+        cy.visit('/contact-us');
         cy.wait(2000);
 
         cy.xpath(`//*/nav/div/div/ul/li/a/strong[text()='${option}']`).parent().should('have.class', 'active');
         cy.wait(2000);
     });
     it('Validar que el nav al momento de entrar a la pagina el titulo sea quienes somos', () => {
-        cy.visit('/#/contact-us');
+        cy.visit('/contact-us');
         cy.wait(2000);
         cy.title().should('eq', 'Contáctanos – Discs');
         cy.wait(2000);

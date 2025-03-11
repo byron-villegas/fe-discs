@@ -11,10 +11,6 @@ export class FavoriteDiscsComponent implements OnInit {
   favoriteDiscs: Disc[] = [];
 
   constructor(private discService: DiscService) {
-    
-  }
-
-  ngOnInit() {
     this.favoriteDiscs = this.discService.getFavoriteDiscs();
 
     if(this.favoriteDiscs.length == 0) {
@@ -23,5 +19,9 @@ export class FavoriteDiscsComponent implements OnInit {
         this.discService.setFavoriteDiscs(resp);
       });
     }
+  }
+
+  ngOnInit() {
+
   }
 }

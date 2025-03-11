@@ -1,6 +1,6 @@
 <app-home-navbar></app-home-navbar>
-<app-home-categories *ngIf="url == '/'"></app-home-categories>
-<app-home-favorite-discs *ngIf="url == '/'"></app-home-favorite-discs>
+<app-home-categories *ngIf="router.url == '/'"></app-home-categories>
+<app-home-favorite-discs *ngIf="router.url == '/'"></app-home-favorite-discs>
 <router-outlet></router-outlet>
 <app-home-footer></app-home-footer>
 <app-home-search-discs></app-home-search-discs>

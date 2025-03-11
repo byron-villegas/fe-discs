@@ -21,7 +21,7 @@ export class DiscViewComponent implements OnInit {
   imageSelected: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute, private locationService: Location, private discService: DiscService, public replaceAll: ReplaceAllPipe, private titleService: Title) {
-    this.baseUrl = location.toString().substring(0, location.toString().indexOf('#'));
+    this.baseUrl = location.toString().substring(0, location.toString().indexOf('discs/'));
     this.pageUrl = location.toString();
   }
 
