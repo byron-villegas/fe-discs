@@ -4,6 +4,6 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/discs/:path*", "destination": "/index.html" },
-    { "source": "/:path*", "destination": "/discs/" }
+    { "source": "/discs", "destination": "/discs/" }
   ]
 }
