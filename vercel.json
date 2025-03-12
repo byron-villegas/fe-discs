@@ -1,5 +1,8 @@
 {
     "version": 2,
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "rewrites": [
+        { "source": "/discs/:path*", "destination": "/discs/:path*"}
+      ]
 }
