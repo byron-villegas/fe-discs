@@ -1,9 +1,16 @@
 {
-    "version": 2,
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "rewrites": [
-      { "handle": "filesystem" },
-      { "source": "/(.*)", "destination": "/index.html" }
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/discs/", "destination": "/index.html" },
+    { "source": "/discs/about-us", "destination": "/index.html" },
+    { "source": "/discs/contact-us", "destination": "/index.html" },
+    { "source": "/discs/disc-category/:categoryName", "destination": "/index.html"},
+    { "source": "/discs/disc-category/:categoryName/page/:pageNumber", "destination": "/index.html"},
+    { "source": "/discs/disc-category/:categoryName/:subCategoryName", "destination": "/index.html"},
+    { "source": "/discs/disc-category/:categoryName/:subCategoryName/page/:pageNumber", "destination": "/index.html"},
+    { "source": "/discs/disc/:sku", "destination": "/index.html"},
+    { "source": "/discs/page-not-found", "destination": "/index.html"}
   ]
 }
