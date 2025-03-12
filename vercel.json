@@ -3,7 +3,5 @@
     "cleanUrls": true,
     "trailingSlash": false,
     "rewrites": [
-        { "source": "/discs/:path*", "destination": "/discs/:path*"},
-        { "source": "/discs", "destination": "/" }
-      ]
+    ]
 }
