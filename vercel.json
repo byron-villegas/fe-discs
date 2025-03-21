@@ -1,19 +1,15 @@
 {
     "version": 2,
-    "cleanUrls": true,
-    "trailingSlash": false,
+    "name": "discs",
     "rewrites": [
-        {
-            "source": "/",
-            "destination": "/api/server"
-        },
-        {
-            "source": "/discs",
-            "destination": "/api/server"
-        },
-        {
-            "source": "/discs/:path*",
-            "destination": "/api/server"
-        }
-    ]
-}
+      {
+        "source": "/(.*)",
+        "destination": "/api"
+      }
+    ],
+    "functions": {
+      "api/server.js": {
+        "includeFiles": "dist/**"
+      }
+    }
+  }
