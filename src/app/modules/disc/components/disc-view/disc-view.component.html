@@ -53,7 +53,7 @@
       <span class="text-white"><strong class="me-2">Compartir: </strong>
         <a href="https://www.facebook.com/sharer/sharer.php?u={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en Facebook" ><i class="fa fa-facebook" aria-hidden="true"></i></a>
         <a href="https://twitter.com/share?url={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        <a href="https://pinterest.com/pin/create/button/?url={{pageUrl}}&amp;media={{baseUrl + disc!.images[0]}}" target="_blank" class="text-white me-3" title="Compartir en Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+        <a href="https://pinterest.com/pin/create/button/?url={{pageUrl}}&amp;media={{ baseUrl + (disc! | imageRoute:disc!.images[0])}}" target="_blank" class="text-white me-3" title="Compartir en Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
         <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{pageUrl}}" target="_blank" class="text-white me-3" title="Compartir en LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
         <a href="https://api.whatsapp.com/send?text={{pageUrl}}" data-action="share/whatsapp/share" target="_blank" class="text-white me-3" title="Compartir en Whatsapp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
         <a href="https://telegram.me/share/url?url={{pageUrl}}" target="_blank" class="text-white" title="Compartir en Telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
