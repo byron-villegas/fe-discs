@@ -3,6 +3,6 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/discs", "destination": "/" },
-    { "source": "/discs/:path*", "destination": "/:path*"}
+    { "source": "/discs/:path*", "destination": "/discs/:path*"}
   ]
 }
