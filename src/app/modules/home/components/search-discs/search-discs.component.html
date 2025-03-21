@@ -9,7 +9,7 @@
       <div class="row row-cols-1 row-cols-md-4">
         <div class="col mb-3" *ngFor="let disc of discs">
             <div class="col mb-2">
-              <a href="/disc/{{disc.sku}}" class="link-light link-underline link-underline-opacity-0">
+              <a routerLink="/disc/{{disc.sku}}" class="link-light link-underline link-underline-opacity-0">
                 <div class="disc-element" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" (click)="clearSearch()">
                   <img src="{{ disc | imageRoute:disc!.images[0] }}" alt="{{disc.sku + '-imagen-1'}}">
                   <div class="hover-img" *ngIf="disc!.images[1]">
@@ -19,7 +19,7 @@
               </a>
             </div>
             <div class="col">
-              <a href="/disc/{{disc.sku}}" class="link-light link-underline link-underline-opacity-0">
+              <a routerLink="/disc/{{disc.sku}}" class="link-light link-underline link-underline-opacity-0">
                 <h6 class="text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" (click)="clearSearch()"><strong>{{disc!.name}}</strong></h6>
               </a>
               <span class="text-white mt-0">{{disc!.author}} - {{disc!.yearCreated}}</span>

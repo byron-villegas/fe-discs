@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Disc } from '../models/disc';
 import { SubCategory } from '../models/subcategory';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,13 @@ export class DiscService {
   private discs: Disc[] = [];
   private favoriteDiscs: Disc[] = [];
 
-  constructor(private http: HttpClient) {
 
+  constructor(private http: HttpClient) {
+    if (this.discs.length == 0) {
+      this.findDiscs().subscribe(discs => {
+        this.discs = discs;
+      });
+    }
   }
 
   findDiscs(): Observable<Disc[]> {
@@ -32,21 +37,17 @@ export class DiscService {
       })
     });
   }
-  
+
   getDiscs(): Disc[] {
     return this.discs;
-  }
-
-  setDiscs(discs: Disc[]): void {
-    this.discs = discs;
   }
 
   getFavoriteDiscs(): Disc[] {
     return this.favoriteDiscs;
   }
 
-  setFavoriteDiscs(favoriteDiscs: Disc[]): void {
-    this.favoriteDiscs = favoriteDiscs;
+  setFavoriteDiscs(discs: Disc[]): void {
+    this.favoriteDiscs = discs;
   }
 
   findDiscsByType(type: string): Disc[] {
@@ -95,33 +96,5 @@ export class DiscService {
     let discs = this.findDiscsByType(categoryName);
 
     return discs.filter(disc => disc.categories.includes(subCategoryName.toUpperCase()));
-  }
-
-  getDiscsOnLocalStorage(): Disc[] {
-    let data = localStorage.getItem('discs');
-
-    if(!data) {
-      return [];
-    }
-
-    return JSON.parse(data);
-  }
-
-  saveDiscsOnLocalStorage(discs: Disc[]): void {
-    localStorage.setItem('discs', JSON.stringify(discs));
-  }
-
-  getFavoriteDiscsOnLocalStorage(): Disc[] {
-    let data = localStorage.getItem('favoriteDiscs');
-
-    if(!data) {
-      return [];
-    }
-
-    return JSON.parse(data);
-  }
-
-  saveFavoriteDiscsOnLocalStorage(favoriteDiscs: Disc[]): void {
-    localStorage.setItem('favoriteDiscs', JSON.stringify(favoriteDiscs));
   }
 }

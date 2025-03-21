@@ -7,10 +7,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DiscCategoryComponent } from './components/disc-category/disc-category.component';
 import { DiscListComponent } from './components/disc-list/disc-list.component';
 import { DiscViewComponent } from './components/disc-view/disc-view.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     QRCodeModule,
     NgxBarcodeModule,
     RedZoomModule,

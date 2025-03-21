@@ -10,10 +10,12 @@ import { FavoriteDiscsComponent } from './components/favorite-discs/favorite-dis
 import { SearchDiscsComponent } from './components/search-discs/search-discs.component';
 import { DiscModule } from '../disc/disc.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     SharedModule,
     DiscModule
   ],

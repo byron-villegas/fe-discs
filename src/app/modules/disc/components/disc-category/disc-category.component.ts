@@ -32,69 +32,63 @@ export class DiscCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
+      this.categoryName = params.get('categoryName')!;
 
-      if(this.discs.length == 0) {
-        this.discService.findDiscs().subscribe(resp => {
-          this.discService.setDiscs(resp);
-          this.categoryName = params.get('categoryName')!;
+      let title = `${this.categoryName}`
 
-          let title = `${this.categoryName}`
-    
-          if (params.get('subCategoryName')) {
-            this.subCategoryName = params.get('subCategoryName')!;
-            title = `${title} – ${this.subCategoryName}`;
-          }
-    
-          if (params.get('pageNumber')) {
-            title = `${title} – Página ${params.get('pageNumber')} – Discs`;
-          }
-          
-          this.titleService.setTitle(this.firstLetterUpperCase(title));
-    
-          if (!environment.discsTypes.includes(this.categoryName)) {
-            this.router.navigate(['page-not-found']);
-            return;
-          }
-    
-          this.discs = this.getDiscs();
-    
-          this.orderedDiscs = this.getDefaultDivision();
-    
-          this.subCategorias = this.discService.findDiscsSubCategories();
-    
-          this.order = this.discCategoryService.getOrder();
-    
-          if (!params.get('pageNumber')) {
-            this.order = 'reset';
-          }
-    
-          if (params.get('pageNumber') && !parseInt(params.get('pageNumber')!)) {
-            this.redirectToNotFoundPage();
-          }
-    
-          if (params.get('pageNumber')) {
-            this.position = parseInt(params.get('pageNumber')!);
-    
-            if (this.position > this.division.length || this.position < 0) {
-              this.redirectToNotFoundPage();
-            }
-    
-            this.position = this.position - 1;
-          }
-    
-          this.changeDiscPage(this.position);
-          this.onOrder(this.order);
-    
-          if (this.discs.length == 0) {
-            this.redirectToNotFoundPage();
-          }
-        });
+      if (params.get('subCategoryName')) {
+        this.subCategoryName = params.get('subCategoryName')!;
+        title = `${title} – ${this.subCategoryName}`;
+      }
+
+      if (params.get('pageNumber')) {
+        title = `${title} – Página ${params.get('pageNumber')} – Discs`;
+      }
+
+      this.titleService.setTitle(this.firstLetterUpperCase(title));
+
+      if (!environment.discsTypes.includes(this.categoryName)) {
+        this.router.navigate(['page-not-found']);
+        return;
+      }
+
+      this.discs = this.getDiscs();
+
+      this.orderedDiscs = this.getDefaultDivision();
+
+      this.subCategorias = this.discService.findDiscsSubCategories();
+
+      this.order = this.discCategoryService.getOrder();
+
+      if (!params.get('pageNumber')) {
+        this.order = 'reset';
+      }
+
+      if (params.get('pageNumber') && !parseInt(params.get('pageNumber')!)) {
+        this.redirectToNotFoundPage();
+      }
+
+      if (params.get('pageNumber')) {
+        this.position = parseInt(params.get('pageNumber')!);
+
+        if (this.position > this.division.length || this.position < 0) {
+          this.redirectToNotFoundPage();
+        }
+
+        this.position = this.position - 1;
+      }
+
+      this.changeDiscPage(this.position);
+      this.onOrder(this.order);
+
+      if (this.discs.length == 0) {
+        this.redirectToNotFoundPage();
       }
     });
   }
 
   getDiscs(): Disc[] {
-    if(this.subCategoryName == '') {
+    if (this.subCategoryName == '') {
       return this.discService.findDiscsByType(this.categoryName);
     } else {
       return this.discService.findDiscsByCategoryAndSubCategory(this.categoryName!, this.replaceAll.transform(this.subCategoryName!, '-+', ' '));
@@ -219,7 +213,7 @@ export class DiscCategoryComponent implements OnInit {
     if (!word.includes('–')) {
       return this.replaceAll.transform(word, '-+', ' ')[0].toUpperCase() + this.replaceAll.transform(word, '-+', ' ').substring(1);
     }
-    
+
     return this.replaceAll
       .transform(word, '-+', ' ')
       .split(' ')

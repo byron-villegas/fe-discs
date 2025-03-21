@@ -2,8 +2,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="me-2" ><i class="fa fa-long-arrow-left fa-white" aria-hidden="true" title="Volver atras" (click)="back()"></i></li>
-      <li class="breadcrumb-item"><a href="/"><i class="fa fa-home me-2" aria-hidden="true"></i>Inicio</a></li>
-      <li *ngIf="subCategoryName" class="breadcrumb-item"><a href="/disc-category/{{disc?.type?.toLowerCase()}}">{{disc?.type | uppercase}}</a></li>
+      <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home me-2" aria-hidden="true"></i>Inicio</a></li>
+      <li *ngIf="subCategoryName" class="breadcrumb-item"><a routerLink="/disc-category/{{disc?.type?.toLowerCase()}}">{{disc?.type | uppercase}}</a></li>
       <li class="breadcrumb-item active">{{ (subCategoryName! ? subCategoryName! : disc?.type!) | uppercase | replaceAll:'-+':' '}}</li>
     </ol>
   </nav>
@@ -45,7 +45,7 @@
       <br />
       <span class="text-white"><strong>Categorías: </strong>
         <span *ngFor="let categoria of disc?.categories; let i = index">
-          <a class="link-secondary text-decoration-none" href="/disc-category/{{ disc?.type?.toLowerCase() }}{{ disc?.type != categoria && categoria != 'VINILOS' ? '/' + this.replaceAll.transform(categoria.toLowerCase(), ' +', '-') : ''}}">{{categoria}}</a>  
+          <a class="link-secondary text-decoration-none" routerLink="/disc-category/{{ disc?.type?.toLowerCase() }}{{ disc?.type != categoria && categoria != 'VINILOS' ? '/' + this.replaceAll.transform(categoria.toLowerCase(), ' +', '-') : ''}}">{{categoria}}</a>  
           <span *ngIf="i+1 != disc!.categories?.length">, </span>
         </span>
       </span>
