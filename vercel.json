@@ -1,8 +1,8 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
-    { "source": "/discs/:path*", "destination": ":path*"}
+    { "source": "/discs", "destination": "/" },
+    { "source": "/discs/:path*", "destination": "/:path*"}
   ]
 }
