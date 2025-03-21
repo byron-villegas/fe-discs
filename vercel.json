@@ -2,8 +2,8 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/discs/:path*", "destination": "http://localhost:4200/discs/:path*"},
-    { "source": "/discs", "destination": "http://localhost:4200" }
+  "redirects": [
+    { "source": "/discs/:path*", "destination": "/:path*"},
+    { "source": "/discs", "destination": "/" }
   ]
 }
