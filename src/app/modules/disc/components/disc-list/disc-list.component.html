@@ -4,7 +4,7 @@
     <div *ngFor="let disc of discs" class="col col-disc">
       <div class="card card-disc text-white">
         <div class="card-img-disc">
-            <a href="/discs/disc/{{disc.sku}}" class="link-light">
+            <a href="/disc/{{disc.sku}}" class="link-light">
               <div class="disc-element">
                 <img src="{{ disc | imageRoute:disc!.images[0] }}" class="w-100" alt="{{disc.sku + '-imagen-1'}}">
                 <div class="hover-img" *ngIf="disc!.images[1]">
@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="card-body">
-          <a href="/discs/disc/{{disc.sku}}" class="link-light">
+          <a href="/disc/{{disc.sku}}" class="link-light">
             <small>
               <strong>{{disc.name}}</strong>
             </small>

@@ -1,7 +1,7 @@
 <!-- BEGIN NAVBAR -->
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark mb-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/discs">
+    <a class="navbar-brand" href="/">
       <img src="assets/images/favicon.gif" alt="Navbar Logo" width="30" height="30" alt="brand">
     </a>
     <button class="navbar-toggler" id="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="route.url == '/discs' ? 'active' : ''" href="/discs"><strong>HOME</strong></a>
+          <a class="nav-link" [ngClass]="route.url == '/' ? 'active' : ''" href="/"><strong>HOME</strong></a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link" [ngClass]="route.url == '/about-us' ? 'active' : ''" href="/discs/about-us"><strong>QUIENES SOMOS</strong></a>
+          <a  class="nav-link" [ngClass]="route.url == '/about-us' ? 'active' : ''" href="/about-us"><strong>QUIENES SOMOS</strong></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="route.url == '/contact-us' ? 'active' : ''" href="/discs/contact-us"><strong>CONTÁCTANOS</strong></a>
+          <a class="nav-link" [ngClass]="route.url == '/contact-us' ? 'active' : ''" href="/contact-us"><strong>CONTÁCTANOS</strong></a>
         </li>
       </ul>
       <div class="d-flex">
