@@ -2,7 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/discs/:path*", "destination": "/index.html" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
