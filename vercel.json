@@ -2,7 +2,8 @@
   "version": 2,
   "cleanUrls": true,
   "redirects": [
-    { "source": "/discs/", "destination": "/" },
+    { "source": "/", "destination": "/discs" },
+    { "source": "/discs", "destination": "/discs" },
     { "source": "/discs/:path*", "destination": "/discs/:path*"}
   ]
 }
