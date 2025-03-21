@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+      { "source": "/discs/:path*", "destination": "/api/server" },
+      { "source": "/discs", "destination": "/api/server" }
+    ]
+  }
