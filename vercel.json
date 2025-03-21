@@ -5,6 +5,10 @@
       {
         "source": "/(.*)",
         "destination": "/api"
+      },
+      {
+        "source": "/discs",
+        "destination": "/api"
       }
     ],
     "functions": {
