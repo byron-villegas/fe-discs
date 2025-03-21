@@ -19,12 +19,12 @@ app.get(basePath, (req, res) => { // Al entrar en la ruta base
 });
 
 // Middleware para redirigir todas las rutas no manejadas a index.html
-app.get('*', (req, res) => {
+app.get(basePath + '*', (req, res) => {
     res.sendFile(path.join(__dirname + indexFilePath));
 });
 
 const PORT = process.env.PORT || angularConfig.projects['fe-discs'].architect.serve.options.port;
-const PATH = basePath.substring(0, basePath.lastIndexOf('/'));
+const PATH = basePath;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}${PATH}`);

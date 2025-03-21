@@ -8,6 +8,11 @@ import { DiscCategoryComponent } from './modules/disc/components/disc-category/d
 
 const routes: Routes = [
   {
+    path: '', // Default route
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+  {
     path: 'about-us',
     component: AboutComponent
   },
@@ -41,8 +46,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'discs',
-    pathMatch: 'full'
+    redirectTo: 'page-not-found'
   }
 ];
 
