@@ -1,12 +1,12 @@
 {
   "name": "fe-discs",
   "version": "1.0.0",
-  "description": "Fronted for discs collection",
+  "description": "Frontend for discs collection",
   "author": "Byron Villegas Moya",
   "license": "MIT",
   "keywords": [
     "Angular",
-    "Fronted",
+    "Frontend",
     "Music"
   ],
   "repository": {
