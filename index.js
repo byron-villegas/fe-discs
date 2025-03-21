@@ -14,11 +14,7 @@ const indexFilePath = buildPath + '/' + indexFile;
 
 app.use(basePath, express.static(__dirname + buildPath)); // Para la ruta genera archivos estaticos
 
-app.get(basePath, (req, res) => { // Al entrar en la ruta base
-    res.sendFile(path.join(__dirname + indexFilePath));  // Retorna el index.html
-});
-
-// Middleware para redirigir todas las rutas no manejadas a index.html
+// Redirigir todas las rutas no manejadas al index.html
 app.get(basePath + '*', (req, res) => {
     res.sendFile(path.join(__dirname + indexFilePath));
 });
