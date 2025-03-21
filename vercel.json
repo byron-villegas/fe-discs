@@ -3,8 +3,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/discs/:path*", "destination": "/discs/index.html" },
+    { "source": "/:path*", "destination": "/index.html" },
     { "source": "/discs", "destination": "/discs/index.html" },
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/discs/:path*", "destination": "/discs/index.html" }
   ]
 }
