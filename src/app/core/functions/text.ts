@@ -14,3 +14,20 @@ export function formatFirstLetterUpperCase(value: string) {
     }
     return text;
 }
+
+export function getTitleCategoryNameByName(name: string) {
+    if (name == null || name == undefined) { 
+        return '';
+    }
+
+    switch (name.toUpperCase()) {
+        case 'VINYLS':
+            return 'Vinilos';
+        case 'CDS':
+            return 'CDs';
+        case 'CASSETTES':
+            return 'Cassettes';
+        default:
+            return '';
+    }
+}

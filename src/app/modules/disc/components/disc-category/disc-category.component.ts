@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { getTitleCategoryNameByName } from 'src/app/core/functions/text';
 import { Disc } from 'src/app/core/models/disc';
 import { SubCategory } from 'src/app/core/models/subcategory';
 import { DiscCategoryService } from 'src/app/core/services/disc-category.service';
@@ -34,11 +35,17 @@ export class DiscCategoryComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.categoryName = params.get('categoryName')!;
 
-      let title = `${this.categoryName}`
+      let title = `${this.categoryName}`;
+
+      title = getTitleCategoryNameByName(this.categoryName);
+
+      if(!params.get('subCategoryName') && !params.get('pageNumber')) {
+        title = `${title} – Discs`;
+      }
 
       if (params.get('subCategoryName')) {
         this.subCategoryName = params.get('subCategoryName')!;
-        title = `${title} – ${this.subCategoryName}`;
+        title = `${title} – ${this.subCategoryName} – Discs`;
       }
 
       if (params.get('pageNumber')) {

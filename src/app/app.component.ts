@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,17 +9,17 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(protected router: Router) {
+  constructor(protected router: Router, private titleService: Title) {
     this.router.events.subscribe((event) => {
       
+      if(this.router.url == '/') {
+        this.titleService.setTitle('Discs');
+      }
+
       // SI CAMBIA DE PAGINA EL NAVBAR DEBE CERRARSE AUTOMATICAMENTE
       if(document.getElementById('navbarSupportedContent')!.classList.contains('show')) {
         document.getElementById('navbar-toggler')!.click();
       }
     });
-  }
-
-  ngOnInit() {
-    localStorage.removeItem('order');
   }
 }
