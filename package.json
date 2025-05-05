@@ -1,22 +1,25 @@
 {
   "name": "fe-discs",
   "version": "1.0.0",
-  "description": "Frontend for discs collection",
-  "author": "Byron Villegas Moya",
+  "description": "App for my disc collection",
+  "author": {
+    "name": "Byron Villegas",
+    "email": "byronvillegasm@gmail.com"
+  },
   "license": "MIT",
   "keywords": [
     "Angular",
-    "Frontend",
-    "Music"
+    "Discs",
+    "Collection"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/byron-villegas/fe-discs.git"
+    "url": "https://github.com/byron-villegas/fe-discs"
   },
   "bugs": {
     "url": "https://github.com/byron-villegas/fe-discs/issues"
   },
-  "homepage": "https://github.com/byron-villegas/fe-discs/blob/main/README.md",
+  "homepage": "https://github.com/byron-villegas/fe-discs",
   "engines": {
     "node": ">=v16.17.0"
   },
