@@ -2,10 +2,23 @@
     "name": "Discs",
     "short_name": "Discs",
     "description": "An application to view and interact with my discs collection.",
+    "author": "Byron Villegas Moya",
+    "developer": {
+      "name": "Byron Villegas Moya",
+      "email": "byronvillegasm@gmail.com",
+      "url": "https://www.linkedin.com/in/byron-villegas-moya"
+    },
+    "categories": [
+      "Discs",
+      "Collection",
+      "Hobby"
+    ],
     "start_url": "/",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",
+    "default_locale": "es",
+    "orientation": "landscape",
     "icons": [
       {
         "src": "/assets/images/favicon.png",
@@ -17,6 +30,5 @@
         "sizes": "512x512",
         "type": "image/png"
       }
-    ],
-    "lang": "es"
+    ]
   }
