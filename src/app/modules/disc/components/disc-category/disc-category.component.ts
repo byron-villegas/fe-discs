@@ -39,7 +39,7 @@ export class DiscCategoryComponent implements OnInit {
 
       title = getTitleCategoryNameByName(this.categoryName);
 
-      if(!params.get('subCategoryName') && !params.get('pageNumber')) {
+      if (!params.get('subCategoryName') && !params.get('pageNumber')) {
         title = `${title} – Discs`;
       }
 
@@ -202,7 +202,10 @@ export class DiscCategoryComponent implements OnInit {
         this.orderedDiscs = this.orderedDiscs.sort((x, y) => y.yearCreated - x.yearCreated);
         break;
       default:
-        this.orderedDiscs = this.getDiscs();
+        this.discs = this.getDiscs();
+        this.division = [];
+        this.orderedDiscs = this.getDefaultDivision();
+        this.position = 0;
         this.order = 'reset';
         break;
     }

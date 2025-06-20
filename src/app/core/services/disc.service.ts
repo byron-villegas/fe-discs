@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Disc } from '../models/disc';
 import { SubCategory } from '../models/subcategory';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,17 @@ export class DiscService {
 
 
   constructor(private http: HttpClient) {
+    let storedDiscs = sessionStorage.getItem('discs');
+
     if (this.discs.length == 0) {
-      this.findDiscs().subscribe(discs => {
-        this.discs = discs;
-      });
+      if (storedDiscs) {
+        this.discs = JSON.parse(storedDiscs);
+      } else {
+        this.findDiscs().subscribe(discs => {
+          this.discs = discs;
+          sessionStorage.setItem('discs', JSON.stringify(discs));
+        });
+      }
     }
   }
 
@@ -43,11 +50,17 @@ export class DiscService {
   }
 
   getFavoriteDiscs(): Disc[] {
+    let favoriteDiscs = sessionStorage.getItem('favoriteDiscs');
+
+    if (favoriteDiscs) {
+      this.favoriteDiscs = JSON.parse(favoriteDiscs);
+    }
     return this.favoriteDiscs;
   }
 
   setFavoriteDiscs(discs: Disc[]): void {
     this.favoriteDiscs = discs;
+    sessionStorage.setItem('favoriteDiscs', JSON.stringify(discs));
   }
 
   findDiscsByType(type: string): Disc[] {
