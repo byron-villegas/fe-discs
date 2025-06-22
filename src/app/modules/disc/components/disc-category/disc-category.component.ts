@@ -203,9 +203,7 @@ export class DiscCategoryComponent implements OnInit {
         break;
       default:
         this.discs = this.getDiscs();
-        this.division = [];
         this.orderedDiscs = this.getDefaultDivision();
-        this.position = 0;
         this.order = 'reset';
         break;
     }
