@@ -12,7 +12,7 @@
             <li *ngFor="let subCategoria of subCategorias['cds']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'cds' ? 'active' : ''" routerLink="/disc-category/cds/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
           </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="subCategorias['cassettes'].length > 0">
           <a class="nav-link dropdown-toggle" [ngClass]="categoryName == 'cassettes' ? 'active' : ''" (mouseenter)="activate(2)" (mouseleave)="desactivate(2)" routerLink="/disc-category/cassettes" role="button" [attr.aria-expanded]="categoriasCheck[2]">CASSETTES</a>
           <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="categoriasCheck[2] == true ? 'show' : ''" (mouseenter)="activate(2)" (mouseleave)="desactivate(2)">
             <li *ngFor="let subCategoria of subCategorias['cassettes']"><a class="dropdown-item" [ngClass]="subCategoria == this.replaceAll.transform(subCategoryName.toUpperCase(), '-+', ' ') && categoryName == 'cassettes' ? 'active' : ''" routerLink="/disc-category/cassettes/{{subCategoria | lowercase | replaceAll:' +':'-'}}">{{subCategoria}}</a></li>
