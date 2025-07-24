@@ -6,7 +6,7 @@ import { Disc } from 'src/app/core/models/disc';
 import { SubCategory } from 'src/app/core/models/subcategory';
 import { DiscCategoryService } from 'src/app/core/services/disc-category.service';
 import { DiscService } from 'src/app/core/services/disc.service';
-import { ReplaceAllPipe } from 'src/app/shared/pipe/replace-all.pipe';
+import { ReplaceAllPipe } from 'src/app/shared/pipes/replace-all.pipe';
 import { environment } from 'src/environments/environment';
 
 @Component({

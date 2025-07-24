@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReplaceAllPipe } from './pipe/replace-all.pipe';
-import { FirstLetterUppercasePipe } from './pipe/first-letter-uppercase.pipe';
-import { ImageRoutePipe } from './pipe/image-route.pipe';
+import { ReplaceAllPipe } from './pipes/replace-all.pipe';
+import { FirstLetterUppercasePipe } from './pipes/first-letter-uppercase.pipe';
+import { ImageRoutePipe } from './pipes/image-route.pipe';
 
 @NgModule({
   imports: [

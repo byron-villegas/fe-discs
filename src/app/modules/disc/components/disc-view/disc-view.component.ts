@@ -4,8 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Disc } from 'src/app/core/models/disc';
 import { DiscService } from 'src/app/core/services/disc.service';
-import { ReplaceAllPipe } from 'src/app/shared/pipe/replace-all.pipe';
-import { environment } from 'src/environments/environment';
+import { ReplaceAllPipe } from 'src/app/shared/pipes/replace-all.pipe';
 
 @Component({
   selector: 'app-disc-view',
