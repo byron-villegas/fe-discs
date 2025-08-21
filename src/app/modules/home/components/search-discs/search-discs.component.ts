@@ -28,21 +28,30 @@ export class SearchDiscsComponent implements OnInit {
   searchChange(value: string): void {
     this.searchText = value;
 
-    if (this.searchText.length != 0) {
-      this.discs = this.discService.findDiscsByType('default')
-        .filter(p => 
-          p.sku.toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.name.toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.author.toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.publisher.toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.yearCreated.toString().toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.country.toString().toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.description.toUpperCase().includes(this.searchText.toUpperCase()) ||
-          p.categories.filter(category => category.includes(this.searchText.toUpperCase())).length > 0 ||
-          p.trackList.filter(track => track.name.toUpperCase().includes(this.searchText.toUpperCase())).length > 0 )
-    } else {
+    if (this.searchText.length === 0) {
       this.discs = [];
+      return;
     }
+
+    let allDiscs = this.discService.getDiscs();
+
+    let discsFindBySku = allDiscs.filter(disc => disc.sku.toUpperCase().includes(this.searchText.toUpperCase()));
+    
+    let discsFindByName = allDiscs.filter(disc => disc.name.toUpperCase().includes(this.searchText.toUpperCase()));
+
+    let discsFindByAuthor = allDiscs.filter(disc => disc.author.toUpperCase().includes(this.searchText.toUpperCase()));
+
+    let discsFindByPublisher = allDiscs.filter(disc => disc.publisher.toUpperCase().includes(this.searchText.toUpperCase()));
+
+    let discsFindByYearCreated = allDiscs.filter(disc => disc.yearCreated.toString().toUpperCase().includes(this.searchText.toUpperCase()));
+
+    let discsFindByCountry = allDiscs.filter(disc => disc.country.toString().toUpperCase().includes(this.searchText.toUpperCase()));
+
+    let discsFindByCategory = allDiscs.filter(disc => disc.categories.filter(category => category.includes(this.searchText.toUpperCase())).length > 0);
+
+    let discsFindByTrack = allDiscs.filter(disc => disc.trackList.filter(track => track.name.toUpperCase().includes(this.searchText.toUpperCase())).length > 0);
+
+    this.discs = [...new Set([...discsFindBySku, ...discsFindByName, ...discsFindByAuthor, ...discsFindByPublisher, ...discsFindByYearCreated, ...discsFindByCountry, ...discsFindByCategory, ...discsFindByTrack])];
   }
 
   viewDisc(sku: string): void {
