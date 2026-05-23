@@ -30,6 +30,9 @@
       "@functions/*": ["src/app/shared/functions/*"],
       "@environments/*": ["src/environments/*"]
     },
+    "types": [
+      "vitest/globals"
+    ]
   },
   "exclude": [
     "cypress.config.ts",
