@@ -1,6 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed } from '@angular/core/testing';
 import { FirstLetterUppercasePipe } from './first-letter-uppercase.pipe';
 
 describe('Pipe: FirstLetterUppercasee', () => {

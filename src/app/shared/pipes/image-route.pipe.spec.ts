@@ -1,6 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed } from '@angular/core/testing';
 import { ImageRoutePipe } from './image-route.pipe';
 
 describe('Pipe: ImageRoutee', () => {

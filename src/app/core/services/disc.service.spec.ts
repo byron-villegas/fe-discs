@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
