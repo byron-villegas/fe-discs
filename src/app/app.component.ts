@@ -21,11 +21,11 @@ export class AppComponent {
     private titleService: Title,
     private discService: DiscService
   ) {
+    let preloaded = false;
     this.router.events.subscribe((event) => {
-      if (this.router.url == '/') {
+      if (this.router.url == '/' && !preloaded) {
         this.titleService.setTitle('Discs');
-
-        // Precarga la primera página de discos para vinyls y cds
+        // Precarga la primera página de discos para vinyls y cds solo una vez
         this.discService.findDiscsPage({
           page: 1,
           size: 15,
@@ -36,11 +36,11 @@ export class AppComponent {
           size: 15,
           type: 'cds'
         }).subscribe();
+        preloaded = true;
       }
-
       // SI CAMBIA DE PAGINA EL NAVBAR DEBE CERRARSE AUTOMATICAMENTE
-      if (document.getElementById('navbarSupportedContent')!.classList.contains('show')) {
-        document.getElementById('navbar-toggler')!.click();
+      if (document.getElementById('navbarSupportedContent')?.classList.contains('show')) {
+        document.getElementById('navbar-toggler')?.click();
       }
     });
   }

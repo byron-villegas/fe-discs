@@ -54,7 +54,7 @@ export class DiscService {
         }),
         params: new HttpParams()
           .set('page', '1')
-          .set('size', '1000')
+          .set('size', '15')
       })
       .pipe(
         map((response) => response.items),
@@ -75,7 +75,7 @@ export class DiscService {
         params: new HttpParams()
           .set('favorite', 'true')
           .set('page', '1')
-          .set('size', '1000')
+          .set('size', '25')
       })
       .pipe(
         map((response) => response.items),
