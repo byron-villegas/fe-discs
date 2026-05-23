@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-home-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+    selector: 'app-home-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.css'],
+    imports: [RouterLink, NgClass]
 })
 export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();

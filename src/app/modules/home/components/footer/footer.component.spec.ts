@@ -1,7 +1,8 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { FooterComponent } from './footer.component';
 
@@ -9,12 +10,12 @@ describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
-  }));
+    imports: [RouterTestingModule, FooterComponent]
+})
+    await TestBed.compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FooterComponent);

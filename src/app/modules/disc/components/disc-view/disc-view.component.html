@@ -31,7 +31,7 @@
       <br />
       <br />
       <span class="text-white"><strong>Código de Barra: </strong></span>
-      <ngx-barcode [bc-value]="disc ? disc.sku! : '1111'" [bc-display-value]="true" [bc-font]="'monospace'" [bc-height]="60" title="Codigo de Barra del Disco"></ngx-barcode>
+      <svg #barcodeElement aria-label="Codigo de Barra del Disco" role="img"></svg>
       <br />
       <span class="text-white"><strong>SKU: </strong>{{disc?.sku}}</span>
       <br />

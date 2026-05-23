@@ -1,6 +1,6 @@
 # fe-discs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.
 
 ## Development server
 
@@ -20,7 +20,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+This project uses [Cypress](https://www.cypress.io/) for end-to-end testing.
+
+Run `npx cypress open` to execute tests in interactive mode.
+
+Run `npx cypress run` to execute tests in headless mode.
 
 ## Further help
 

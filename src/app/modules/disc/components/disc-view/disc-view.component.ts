@@ -1,17 +1,25 @@
-import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Location, NgIf, NgFor, NgClass, UpperCasePipe } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import JsBarcode from 'jsbarcode';
 import { Disc } from 'src/app/core/models/disc';
 import { DiscService } from 'src/app/core/services/disc.service';
 import { ReplaceAllPipe } from 'src/app/shared/pipes/replace-all.pipe';
+import { RedZoomDirective } from 'ngx-red-zoom';
+import { QRCodeComponent } from 'angularx-qrcode';
+import { ReplaceAllPipe as ReplaceAllPipe_1 } from '../../../../shared/pipes/replace-all.pipe';
+import { ImageRoutePipe } from '../../../../shared/pipes/image-route.pipe';
 
 @Component({
-  selector: 'app-disc-view',
-  templateUrl: './disc-view.component.html',
-  styleUrls: ['./disc-view.component.css']
+    selector: 'app-disc-view',
+    templateUrl: './disc-view.component.html',
+    styleUrls: ['./disc-view.component.css'],
+  imports: [RouterLink, NgIf, NgFor, NgClass, RedZoomDirective, QRCodeComponent, UpperCasePipe, ReplaceAllPipe_1, ImageRoutePipe],
+  providers: [ReplaceAllPipe]
 })
 export class DiscViewComponent implements OnInit {
+  @ViewChild('barcodeElement') barcodeElement?: ElementRef<SVGSVGElement>;
   sku: string | undefined;
   disc: Disc | undefined;
   subCategoryName: string | undefined;
@@ -22,6 +30,10 @@ export class DiscViewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private locationService: Location, private discService: DiscService, public replaceAll: ReplaceAllPipe, private titleService: Title) {
     this.baseUrl = location.toString().split('disc/')[0];
     this.pageUrl = location.toString();
+  }
+
+  ngAfterViewInit(): void {
+    this.renderBarcode();
   }
 
   ngOnInit() {
@@ -51,6 +63,7 @@ export class DiscViewComponent implements OnInit {
         this.disc = discOfList;
         this.titleService.setTitle(this.disc.author + ' – ' + this.disc.name + ' – Discs');
         this.subCategoryName = this.disc.categories[0].toLowerCase();
+        this.renderBarcode();
         return;
       }
 
@@ -60,6 +73,7 @@ export class DiscViewComponent implements OnInit {
 
           this.titleService.setTitle(this.disc!.author + ' – ' + this.disc!.name + ' – Discs');
           this.subCategoryName = this.disc.categories[0].toLowerCase();
+          this.renderBarcode();
         },
         error: () => {
           this.router.navigate(['/page-not-found']);
@@ -78,5 +92,17 @@ export class DiscViewComponent implements OnInit {
 
   changeImageSelected(position: number): void {
     this.imageSelected = position;
+  }
+
+  private renderBarcode(): void {
+    if (!this.barcodeElement?.nativeElement || !this.disc?.sku) {
+      return;
+    }
+
+    JsBarcode(this.barcodeElement.nativeElement, this.disc.sku, {
+      displayValue: true,
+      font: 'monospace',
+      height: 60
+    });
   }
 }

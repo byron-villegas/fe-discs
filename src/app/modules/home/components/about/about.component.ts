@@ -2,9 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-home-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+    selector: 'app-home-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
   @ViewChild('backgroundSound')

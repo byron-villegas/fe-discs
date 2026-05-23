@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'replaceAll'
-})
+@Pipe({ name: 'replaceAll' })
 export class ReplaceAllPipe implements PipeTransform {
 
   transform(value: string, replaceExp: string, newValue: string): string {

@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AboutComponent } from './modules/home/components/about/about.component';
 import { ContactComponent } from './modules/home/components/contact/contact.component';
 import { PageNotFoundComponent } from './modules/home/components/page-not-found/page-not-found.component';
 import { DiscViewComponent } from './modules/disc/components/disc-view/disc-view.component';
 import { DiscCategoryComponent } from './modules/disc/components/disc-category/disc-category.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
-    path: '', // Default route
+    path: '',
     redirectTo: '',
     pathMatch: 'full'
   },
@@ -49,11 +48,3 @@ const routes: Routes = [
     redirectTo: 'page-not-found'
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {
-
-}

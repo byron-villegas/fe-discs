@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Disc } from 'src/app/core/models/disc';
 import { DiscService } from 'src/app/core/services/disc.service';
+import { DiscListComponent } from '../../../disc/components/disc-list/disc-list.component';
 
 @Component({
-  selector: 'app-home-favorite-discs',
-  templateUrl: './favorite-discs.component.html',
-  styleUrls: ['./favorite-discs.component.css']
+    selector: 'app-home-favorite-discs',
+    templateUrl: './favorite-discs.component.html',
+    styleUrls: ['./favorite-discs.component.css'],
+    imports: [DiscListComponent]
 })
 export class FavoriteDiscsComponent implements OnInit {
   favoriteDiscs: Disc[] = [];

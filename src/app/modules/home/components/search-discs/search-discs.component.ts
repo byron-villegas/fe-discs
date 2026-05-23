@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Disc } from 'src/app/core/models/disc';
 import { DiscService } from 'src/app/core/services/disc.service';
+import { NgIf, NgFor } from '@angular/common';
+import { ImageRoutePipe } from '../../../../shared/pipes/image-route.pipe';
 
 @Component({
-  selector: 'app-home-search-discs',
-  templateUrl: './search-discs.component.html',
-  styleUrls: ['./search-discs.component.css']
+    selector: 'app-home-search-discs',
+    templateUrl: './search-discs.component.html',
+    styleUrls: ['./search-discs.component.css'],
+    imports: [NgIf, NgFor, RouterLink, ImageRoutePipe]
 })
 export class SearchDiscsComponent implements OnInit {
   searchText: string = '';

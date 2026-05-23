@@ -1,7 +1,10 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
+import { DiscService } from 'src/app/core/services/disc.service';
 
 import { FavoriteDiscsComponent } from './favorite-discs.component';
 
@@ -9,12 +12,21 @@ describe('FavoriteDiscsComponent', () => {
   let component: FavoriteDiscsComponent;
   let fixture: ComponentFixture<FavoriteDiscsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ FavoriteDiscsComponent ]
-    })
-    .compileComponents();
-  }));
+    imports: [CommonModule, FavoriteDiscsComponent],
+    providers: [{
+            provide: DiscService,
+            useValue: {
+                getFavoriteDiscs: () => [],
+                findFavoriteDiscs: () => of([]),
+                setFavoriteDiscs: () => undefined
+            }
+        }],
+    schemas: [NO_ERRORS_SCHEMA]
+})
+    await TestBed.compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FavoriteDiscsComponent);
