@@ -94,15 +94,9 @@ export class DiscCategoryComponent implements OnInit {
 
   onOrder(value: string) {
     this.order = value;
-
     this.discCategoryService.setOrder(this.order);
-
-    if (this.currentPage !== 1) {
-      this.router.navigate([this.getPageRoute(1)]);
-      return;
-    }
-
-    this.loadDiscsPage(1);
+    // Mantener la página actual al cambiar el orden
+    this.loadDiscsPage(this.currentPage);
   }
 
   private firstLetterUpperCase(word: string) {
