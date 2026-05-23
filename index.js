@@ -4,11 +4,12 @@ const angularConfig = require('./angular.json');
 
 const app = express();
 
-const basePath = angularConfig.projects['fe-discs'].architect.build.options.baseHref;
-const outputPath = angularConfig.projects['fe-discs'].architect.build.options.outputPath;
+const projectConfig = angularConfig.projects['fe-discs'];
 
-const buildPath = '/' + outputPath;
+const basePath = projectConfig.architect.build.options.baseHref;
+const outputPath = 'dist/browser';
 
+const buildPath = '/' + outputPath.replace(/^\/+/, '');
 const indexFile = 'index.html';
 const indexFilePath = buildPath + '/' + indexFile;
 
@@ -25,7 +26,7 @@ app.get(basePath + '*', (req, res) => {
     res.sendFile(path.join(__dirname + indexFilePath));
 });
 
-const PORT = process.env.PORT || angularConfig.projects['fe-discs'].architect.serve.options.port;
+const PORT = process.env.PORT || projectConfig.architect.serve.options.port;
 const PATH = basePath;
 
 app.listen(PORT, () => {
