@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Disc } from '../models/disc';
-import { SubCategory } from '../models/subcategory';
-import { environment } from 'src/environments/environment';
+import { Disc } from '@models/disc';
+import { SubCategory } from '@models/subcategory';
+import { environment } from '@environments/environment';
 import { map, Observable, of, tap } from 'rxjs';
 
 export interface PagedResponse<T> {

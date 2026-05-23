@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { NgIf, NgForOf, NgClass } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { getTitleCategoryNameByName } from 'src/app/core/functions/text';
-import { Disc } from 'src/app/core/models/disc';
-import { SubCategory } from 'src/app/core/models/subcategory';
-import { DiscCategoryService } from 'src/app/core/services/disc-category.service';
-import { DiscService, PagedResponse } from 'src/app/core/services/disc.service';
-import { ReplaceAllPipe } from 'src/app/shared/pipes/replace-all.pipe';
-import { environment } from 'src/environments/environment';
-import { NgClass, NgFor, NgIf, UpperCasePipe, LowerCasePipe } from '@angular/common';
+import { getTitleCategoryNameByName } from '@functions/text';
+import { Disc } from '@models/disc';
+import { SubCategory } from '@models/subcategory';
+import { DiscCategoryService } from '@services/disc-category.service';
+import { DiscService, PagedResponse } from '@services/disc.service';
+import { ReplaceAllPipe } from '@pipes/replace-all.pipe';
+import { environment } from '@environments/environment';
+import { UpperCasePipe, LowerCasePipe } from '@angular/common';
 import { DiscListComponent } from '../disc-list/disc-list.component';
-import { ReplaceAllPipe as ReplaceAllPipe_1 } from '../../../../shared/pipes/replace-all.pipe';
 
 @Component({
     selector: 'app-disc-category',
     templateUrl: './disc-category.component.html',
     styleUrls: ['./disc-category.component.css'],
-  imports: [RouterLink, NgClass, NgFor, NgIf, DiscListComponent, UpperCasePipe, LowerCasePipe, ReplaceAllPipe_1],
+  imports: [RouterLink, NgIf, NgForOf, NgClass, DiscListComponent, UpperCasePipe, LowerCasePipe, ReplaceAllPipe],
   providers: [ReplaceAllPipe]
 })
 export class DiscCategoryComponent implements OnInit {

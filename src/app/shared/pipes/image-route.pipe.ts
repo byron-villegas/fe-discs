@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Disc } from 'src/app/core/models/disc';
+import { Disc } from '@models/disc';
 
 @Pipe({ name: 'imageRoute' })
 export class ImageRoutePipe implements PipeTransform {

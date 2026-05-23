@@ -1,10 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { DiscService } from 'src/app/core/services/disc.service';
+import { DiscService } from '@services/disc.service';
 
 import { SearchDiscsComponent } from './search-discs.component';
 

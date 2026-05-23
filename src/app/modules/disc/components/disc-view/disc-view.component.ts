@@ -1,21 +1,21 @@
-import { Location, NgIf, NgFor, NgClass, UpperCasePipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Location, UpperCasePipe } from '@angular/common';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgIf, NgForOf, NgClass } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import JsBarcode from 'jsbarcode';
-import { Disc } from 'src/app/core/models/disc';
-import { DiscService } from 'src/app/core/services/disc.service';
-import { ReplaceAllPipe } from 'src/app/shared/pipes/replace-all.pipe';
+import { Disc } from '@models/disc';
+import { DiscService } from '@services/disc.service';
+import { ReplaceAllPipe } from '@pipes/replace-all.pipe';
 import { RedZoomDirective } from 'ngx-red-zoom';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { ReplaceAllPipe as ReplaceAllPipe_1 } from '../../../../shared/pipes/replace-all.pipe';
-import { ImageRoutePipe } from '../../../../shared/pipes/image-route.pipe';
+import { ImageRoutePipe } from '@pipes/image-route.pipe';
 
 @Component({
     selector: 'app-disc-view',
     templateUrl: './disc-view.component.html',
     styleUrls: ['./disc-view.component.css'],
-  imports: [RouterLink, NgIf, NgFor, NgClass, RedZoomDirective, QRCodeComponent, UpperCasePipe, ReplaceAllPipe_1, ImageRoutePipe],
+  imports: [RouterLink, NgIf, NgForOf, NgClass, RedZoomDirective, QRCodeComponent, UpperCasePipe, ReplaceAllPipe, ImageRoutePipe],
   providers: [ReplaceAllPipe]
 })
 export class DiscViewComponent implements OnInit {

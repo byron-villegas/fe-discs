@@ -1,14 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { DiscCategoryService } from 'src/app/core/services/disc-category.service';
-import { DiscService } from 'src/app/core/services/disc.service';
+import { DiscCategoryService } from '@services/disc-category.service';
+import { DiscService } from '@services/disc.service';
 
 import { DiscCategoryComponent } from './disc-category.component';
 

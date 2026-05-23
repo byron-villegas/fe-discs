@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Disc } from 'src/app/core/models/disc';
-import { DiscService } from 'src/app/core/services/disc.service';
+import { Disc } from '@models/disc';
+import { DiscService } from '@services/disc.service';
 import { DiscListComponent } from '../../../disc/components/disc-list/disc-list.component';
 
 @Component({

@@ -1,3 +1,7 @@
+<!-- Floating Search Button -->
+<button class="floating-search-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" title="Buscar Discos">
+  <i class="fa fa-search"></i>
+</button>
 <div class="offcanvas offcanvas-bottom text-bg-dark" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header">
     <input type="text" class="form-control" id="search" placeholder="Buscar disco..." [value]="this.searchText" (keyup)="searchChange($any($event).target.value)">

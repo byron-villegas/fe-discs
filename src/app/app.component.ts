@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiscService } from './core/services/disc.service';
+import { DiscService } from '@services/disc.service';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './modules/home/components/navbar/navbar.component';
@@ -37,10 +37,6 @@ export class AppComponent {
           type: 'cds'
         }).subscribe();
         preloaded = true;
-      }
-      // SI CAMBIA DE PAGINA EL NAVBAR DEBE CERRARSE AUTOMATICAMENTE
-      if (document.getElementById('navbarSupportedContent')?.classList.contains('show')) {
-        document.getElementById('navbar-toggler')?.click();
       }
     });
   }

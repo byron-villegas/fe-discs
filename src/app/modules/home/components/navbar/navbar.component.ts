@@ -14,8 +14,16 @@ export class NavbarComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
-    
+    // Cierra el navbar automáticamente al cambiar de ruta
+    this.router.events.subscribe(() => {
+      const navbar = document.getElementById('navbarSupportedContent');
+      const toggler = document.getElementById('navbar-toggler');
+      if (navbar?.classList.contains('show')) {
+        toggler?.click();
+      }
+    });
   }
 
   get route(): Router {
